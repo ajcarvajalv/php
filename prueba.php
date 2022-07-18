@@ -82,4 +82,43 @@
         echo "El número $valor es impar <br>";
     }
 
+    $miAuto = array(
+        "Patente" => "AA123HB",
+        "Marca" => "Ford",
+    );
+
+    foreach ($miAuto as $clave => $valor) {
+        echo "La $clave es $valor <br>";
+    }
+
+    $aClientes = array(
+        array("dni" => "33300012", "nombre" => "Ana Valle"),
+        array("dni" => "33300013", "nombre" => "Bernabé"),
+    );
+
+    foreach ($aClientes as $pos => $cliente) {
+        echo "En la posición $pos contiene " . $cliente["nombre"] . "<br>";
+    }
+
+    function sumar($num1, $num2) {
+        $resultado = $num1 + $num2;
+        return $resultado;
+    }
+
+    function alcuadrado($num) {
+        return $num * $num;
+    }
+
+    echo "La suma es " . sumar(5000, 800) . "<br>";
+    echo alcuadrado(sumar(10, 5)) . "<br>";
+
+    function concatenar($cadena1, $cadena2) {
+        return "$cadena1 $cadena2";
+    }
+
+    $result = concatenar("El libro", "de la selva");
+    echo $result . "<br>";
+
+    $result = concatenar("El día", "después de mañana");
+    echo $result . "<br>";
 ?>

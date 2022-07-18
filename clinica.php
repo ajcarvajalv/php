@@ -30,6 +30,16 @@ $aPacientes[] = array(
     "peso" => 79,
 );
 
+                        /*
+                        for ($i = 0; $i < count($aPacientes); $i++) {
+                            echo "<tr>";
+                            echo "<td>" . $aPacientes[$i]["dni"] . "</td>";
+                            echo "<td>" . $aPacientes[$i]["nombre"] . "</td>";
+                            echo "<td>" . $aPacientes[$i]["edad"] . "</td>";
+                            echo "<td>" . $aPacientes[$i]["peso"] . "</td>";
+                            echo "</tr>";
+                        } */
+
 ?>
 
 
@@ -67,16 +77,19 @@ $aPacientes[] = array(
                         </tr>
                     </thead>
                     <tbody>
+
                         <?php
 
-                        for ($i = 0; $i < count($aPacientes); $i++) {
-                            echo "<tr>";
-                            echo "<td>" . $aPacientes[$i]["dni"] . "</td>";
-                            echo "<td>" . $aPacientes[$i]["nombre"] . "</td>";
-                            echo "<td>" . $aPacientes[$i]["edad"] . "</td>";
-                            echo "<td>" . $aPacientes[$i]["peso"] . "</td>";
-                            echo "</tr>";
-                        }
+                        foreach ($aPacientes as $paciente) {
+                        ?>
+                            <tr>
+                                <td><?php echo $paciente["dni"] ?></td>
+                                <td><?php echo $paciente["nombre"] ?></td>
+                                <td><?php echo $paciente["edad"] ?></td>
+                                <td><?php echo $paciente["peso"] ?></td>
+                            </tr>
+                        <?php
+                        }                    
                         ?>
                     </tbody>
                 </table>
