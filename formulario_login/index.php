@@ -4,11 +4,13 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+if ($_POST) {
     if (empty($_POST["txtUsuario"]) or empty($_POST["txtClave"])) {
         $msg = "Válido solo para usuarios registrados";
     } else {
         header("Location: acceso-confirmado.php");
     }
+}
 
 ?>
 
@@ -34,8 +36,8 @@ error_reporting(E_ALL);
             </div>
             <div class="row">
                 <?php
-                if ($_POST) {
-                echo "<div class='col-12 alert alert-danger'>" . $msg . "</div>";
+                if (isset($msg)) {
+                    echo "<div class='col-12 alert alert-danger'>" . $msg . "</div>";
                 } ?>
             </div>
             <div class="row">
