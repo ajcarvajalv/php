@@ -11,20 +11,25 @@ $ivaCantidad = 0;
 
 if ($_POST) {
     $iva = $_POST["lstIva"];
-    $precioSinIva = ($_POST["txtSinIva"]) > 0? $_POST["txtSinIva"] : 0;
-    $precioConIva = ($_POST["txtConIva"]) > 0? $_POST["txtConIva"] : 0;
+    $precioSinIva = ($_POST["txtSinIva"]) > 0 ? $_POST["txtSinIva"] : 0;
+    $precioConIva = ($_POST["txtConIva"]) > 0 ? $_POST["txtConIva"] : 0;
 
-    if ($precioSinIva > 0){
-        $precioConIva = $precioSinIva * ($iva/100+1);
-    }
+    if ($precioSinIva > 0 && $precioConIva > 0) {
+        $msg = "Por favor inserte solo un precio";
+        $precioSinIva = 0;
+        $precioConIva = 0;
+    } else {
+        if ($precioSinIva > 0) {
+            $precioConIva = $precioSinIva * ($iva / 100 + 1);
+        }
 
-    if ($precioConIva > 0){
-        $precioSinIva = $precioConIva / ($iva/100+1);
+        if ($precioConIva > 0) {
+            $precioSinIva = $precioConIva / ($iva / 100 + 1);
+        }
     }
 
     $ivaCantidad = $precioConIva - $precioSinIva;
-
-    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -72,11 +77,17 @@ if ($_POST) {
                     <div class="py-3">
                         <button type="submit" class="btn btn-primary">CALCULAR</button>
                     </div>
-
                 </form>
+
+                <?php if(isset($msg)){ ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $msg; ?>
+                </div>
+                <?php } ?>
+
             </div>
 
-            <div class="col-12 col-sm-6 offset-2">
+            <div class="col-12 col-sm-6 offset-sm-2">
                 <table class="table table-hover border">
                     <tr>
                         <th>IVA:</th>
