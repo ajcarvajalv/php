@@ -59,6 +59,21 @@ if ( $_POST ) {
 }
 
 //clientes_session.php?do=eliminar&id=1
+/*
+if(isset($_GET["pos"])){
+    //Recupero dato que viene por la query
+    $pos = $_GET["pos"];
+
+    //Elimina la posición
+    unset($aClientes[$pos]);
+
+    //Actualizo variable de sesión con el array actualizado
+    $_SESSION["listadoClientes"] = $aClientes;
+    header("Location: clientes_session.php");
+
+}
+*/
+
 
 ?>
 

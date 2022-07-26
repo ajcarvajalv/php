@@ -1,0 +1,17 @@
+Este es un mensaje857910Este es un mensaje
+Datos del array: 
+
+Datos del array: 
+
+8
+5
+7
+9
+10Este es un mensaje
+Datos del array: 
+
+8
+5
+7
+9
+10
