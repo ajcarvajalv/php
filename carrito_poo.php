@@ -170,7 +170,7 @@ $carrito->cargarProducto($producto2);
 <body>
     <main class="container">
         <div class="row mt-5">
-            <div class="col-12 col-sm-4">
+            <div class="col-12 col-sm-5">
                 <?php $carrito->imprimirTicket(); ?>
             </div>
         </div>
