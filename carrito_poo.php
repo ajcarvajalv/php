@@ -94,12 +94,12 @@ class Carrito{
         $this->subtotal = 0;
         $this->total = 0;
 
-        for($i=0; $i<count($this->aProductos); $i++){
-            $this->subtotal += $this->aProductos[$i]->precio;
+        foreach($this->aProductos as $producto){
+            $this->subtotal += $producto->precio;
         }
 
-        for($i=0; $i<count($this->aProductos); $i++){
-            $this->total += $this->aProductos[$i]->precio * (1+($this->aProductos[$i]->iva/100));
+        foreach($this->aProductos as $producto){
+            $this->total += $producto->precio * (1+($producto->iva/100));
         }
 
         echo "<table class='table table-hover border'><tr><th colspan='2' class='text-center'>ECO MARKET</th></tr>";
