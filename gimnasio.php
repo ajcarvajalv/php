@@ -30,12 +30,16 @@ class Clase{
 
     public function imprimirListado(){
 
-        echo "*** Listado de alumnos de clase " . $this->nombre . " ***<br/>";
-        foreach($this->aAlumnos as $pos => $alumno){
-            echo $pos+1 . ". " . $alumno->nombre . "</br>";
+        echo "<table class='table table-bordered table-striped table-hover'><tr><th colspan='4' class='table-dark text-center'>" . "Clase: " . $this->nombre . "</th></tr>";
+        echo "<tr><th colspan='2' class='text-start'>Entrenador</th><td colspan='2' class='text-start'>" . $this->entrenador->nombre . "</td></tr>";
+        echo "<tr><th colspan='4' class='text-center'>Alumnos</th></tr>";
+        echo "<tr><th>DNI</th><th>Nombre</th><th>Correo</th><th>Celular</th>";
+        foreach($this->aAlumnos as $alumno){
+             echo "<tr><td>" . $alumno->dni . "</td><td>"
+                        . $alumno->nombre . "</td><td>"
+                        . $alumno->correo . "</td><td>"
+                        . $alumno->celular . "</td></td>";
         }
-        echo "<br/>";
-
     }
 }
 
@@ -44,6 +48,15 @@ class Persona {
     protected $nombre;
     protected $correo;
     protected $celular;
+
+    public function __construct($dni, $nombre, $correo, $celular)
+    {
+        $this->dni = $dni;
+        $this->nombre = $nombre;
+        $this->correo = $correo;
+        $this->celular = $celular;
+    }
+
 }
 
 class Alumno extends Persona {
@@ -55,16 +68,14 @@ class Alumno extends Persona {
 
     public function __construct($dni, $nombre, $correo, $celular, $fechaNac)
     {
-        $this->dni = $dni;
-        $this->nombre = $nombre;
-        $this->correo = $correo;
-        $this->celular = $celular;
+        parent::__construct($dni, $nombre, $correo, $celular);
         $this->fechaNac = $fechaNac;
         $this->peso = 0.0;
         $this->altura = 0.0;
         $this->aptoFisico = false;
         $this->presentismo = 0.0;
     }
+
 
     public function __get($propiedad){
         return $this->$propiedad;
@@ -135,7 +146,6 @@ $clase1->asignarEntrenador($entrenador1);
 $clase1->inscribirAlumno($alumno1);
 $clase1->inscribirAlumno($alumno3);
 $clase1->inscribirAlumno($alumno4);
-$clase1->imprimirListado();
 
 $clase2 = new Clase();
 $clase2->nombre = "Zumba";
@@ -143,7 +153,26 @@ $clase2->asignarEntrenador($entrenador2);
 $clase2->inscribirAlumno($alumno1);
 $clase2->inscribirAlumno($alumno2);
 $clase2->inscribirAlumno($alumno3);
-$clase2->imprimirListado();
-
-
 ?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gimnasio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-12 text-center"><h1>Gimnasio</h1></div>
+        </div>
+
+        <div class="row">
+            <div class="col-12"><?php $clase2->imprimirListado(); ?></div>
+        </div>
+    </main>
+</body>
+</html>
