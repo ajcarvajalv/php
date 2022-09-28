@@ -47,15 +47,15 @@ include_once "header.php";
             </div>
             <div class="row">
                 <div class="col-6 form-group">
-                    <label for="txtNombre">Usuario:</label>
+                    <label for="txtUsuario">Usuario:</label>
                     <input type="text" required class="form-control" name="txtUsuario" id="txtUsuario" value="<?php echo $usuario->usuario ?>">
                 </div>
                 <div class="col-6 form-group">
-                    <label for="txtCuit">Nombre:</label>
+                    <label for="txtNombre">Nombre:</label>
                     <input type="text" required class="form-control" name="txtNombre" id="txtNombre" value="<?php echo $usuario->nombre ?>">
                 </div>
                 <div class="col-6 form-group">
-                    <label for="txtCuit">Apellido:</label>
+                    <label for="txtApellido">Apellido:</label>
                     <input type="text" required class="form-control" name="txtApellido" id="txtApellido" value="<?php echo $usuario->apellido ?>">
                 </div>
                 <div class="col-6 form-group">
@@ -63,7 +63,7 @@ include_once "header.php";
                     <input type="email" class="form-control" name="txtCorreo" id="txtCorreo" required value="<?php echo $usuario->correo ?>">
                 </div>
                 <div class="col-6 form-group">
-                    <label for="txtCorreo">Clave:</label>
+                    <label for="txtClave">Clave:</label>
                     <input type="password" class="form-control" name="txtClave" id="txtClave" value="">
                     <small>Completar únicamente para cambiar la clave</small>
                 </div>

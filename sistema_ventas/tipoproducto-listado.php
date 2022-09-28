@@ -2,8 +2,8 @@
 
 include_once "config.php";
 include_once "entidades/tipoproducto.php";
-include_once "header.php"; 
 $pg = "Listado de tipos de productos";
+include_once "header.php"; 
 
 $tipoProducto = new TipoProducto();
 $aTiposProductos = $tipoProducto->obtenerTodos();
@@ -27,7 +27,7 @@ $aTiposProductos = $tipoProducto->obtenerTodos();
               <tr>
                   <td><?php echo $tipoProducto->nombre; ?></td>
                   <td style="width: 110px;">
-                      <a href="tipoproducto-formulario.php?id=<?php echo $tipoProducto->idtipoproducto; ?>"><i class="fas fa-search"></i></a>   
+                      <a href="tipoproducto-formulario.php?id=<?php echo $tipoProducto->idtipoproducto; ?>"><i class="fas fa-pen-square"></i></a>   
                   </td>
               </tr>
             <?php endforeach; ?>

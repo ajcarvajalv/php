@@ -36,7 +36,7 @@ include_once("header.php");
                   <td><?php echo $cliente->telefono; ?></td>
                   <td><?php echo $cliente->correo; ?></td>
                   <td style="width: 110px;">
-                      <a href="cliente-formulario.php?id=<?php echo $cliente->idcliente; ?>"><i class="fas fa-search"></i></a>   
+                      <a href="cliente-formulario.php?id=<?php echo $cliente->idcliente; ?>"><i class="fas fa-pen-square"></i></a>   
                   </td>
               </tr>
             <?php endforeach; ?>

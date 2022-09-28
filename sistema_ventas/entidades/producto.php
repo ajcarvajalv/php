@@ -7,7 +7,7 @@ class Producto{
     private $precio;
     private $descripcion;
     private $imagen;
-    private $fkidtipoproducto;
+    private $fk_idtipoproducto;
 
     public function __construct()
     {
@@ -23,6 +23,16 @@ class Producto{
     {
         $this->$atributo = $valor;
         return $this;
+    }
+
+    public function cargarFormulario($request){
+        $this->idproducto = isset($request["id"]) ? $request["id"] : "";
+        $this->nombre = isset($request["txtNombre"]) ? $request["txtNombre"] : "";
+        $this->cantidad = isset($request["numCantidad"]) ? $request["numCantidad"] : 0;
+        $this->precio = isset($request["numPrecio"]) ? $request["numPrecio"] : 0;
+        $this->descripcion = isset($request["txtDescripcion"]) ? $request["txtDescripcion"] : "";
+        $this->imagen = isset($request["imgProducto"]) ? $request["imgProducto"] : "";
+        $this->fk_idtipoproducto = isset($request["lstTipoProducto"]) ? $request["lstTipoProducto"] : "";
     }
 
     public function insertar(){
@@ -44,7 +54,6 @@ class Producto{
                     '$this->imagen',
                     $this->fk_idtipoproducto
                 );";
-        // print_r($sql);exit;
         //Ejecuta la query
         if (!$mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
