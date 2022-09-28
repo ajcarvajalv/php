@@ -172,6 +172,45 @@ class Venta {
         return $aResultado;
     }
 
+    public function obtenerVentasPorCliente($idCliente)
+    {
+        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
+        $sql = "SELECT idventa,
+                        fecha,
+                        cantidad,
+                        preciounitario,
+                        total,
+                        fk_idcliente,
+                        fk_idproducto
+                FROM ventas WHERE fk_idcliente = $idCliente";
+        if (!$resultado = $mysqli->query($sql)) {
+            printf("Error en query: %s\n", $mysqli->error . " " . $sql);
+        }
+
+        $aResultado = array();
+        if($resultado){
+            //Convierte el resultado en un array asociativo
+
+            while($fila = $resultado->fetch_assoc()){
+                $entidadAux = new Venta();
+                $entidadAux->idventa = $fila["idventa"];
+                if(isset($fila["fecha"])){
+                    $entidadAux->fecha = $fila["fecha"];
+                }else{
+                    $entidadAux->fecha = "";
+                }
+                $entidadAux->cantidad = $fila["cantidad"];
+                $entidadAux->preciounitario = $fila["preciounitario"];
+                $entidadAux->total = $fila["total"];
+                $entidadAux->fk_idcliente = $fila["fk_idcliente"];
+                $entidadAux->fk_idproducto = $fila["fk_idproducto"];
+                $aResultado[] = $entidadAux;
+            }
+        }
+        return $aResultado;
+
+    }
+
     public function cargarGrilla(){
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
 
