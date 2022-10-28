@@ -3,6 +3,8 @@ $pg = "Listado de productos";
 include_once "config.php";
 include_once "entidades/producto.php";
 include_once "entidades/tipoproducto.php";
+
+$pg = "Edición de productos";
 include_once "header.php";
 
 $tipoProducto = new TipoProducto();
